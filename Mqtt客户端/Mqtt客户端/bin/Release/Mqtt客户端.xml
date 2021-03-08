@@ -1,0 +1,770 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Mqtt客户端
+</name>
+</assembly>
+<members>
+<member name="F:Mqtt客户端.MqttClient.PORT_DEFAULT">
+	<summary>MQTT默认端口号</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_CONNCET">
+	<summary>客户端请求连接服务器(客户端到服务端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_CONNACK">
+	<summary>连接确认(服务端到客户端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_PUBLISH">
+	<summary>发布消息(两个方向都允许)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_PUBACK">
+	<summary>发布确认，响应QoS等级为1的PUBLISH包(两个方向都允许)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_PUBREC">
+	<summary>发布接收（有保证的交付第1部分）(两个方向都允许)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_PUBREL">
+	<summary>发布释放（有保证的交付第2部分）(两个方向都允许)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_PUBCOMP">
+	<summary>发布完成（有保证的交付第3部分）(两个方向都允许)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_SUBSCRIBE">
+	<summary>客户端订阅请求(客户端到服务端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_SUBACK">
+	<summary>订阅确认(服务端到客户端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_UNSUBSCRIBE">
+	<summary>客户端取消订阅请求(客户端到服务端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_UNSUBACK">
+	<summary>取消订阅确认(服务端到客户端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_PINGREQ">
+	<summary>心跳请求(客户端到服务端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_PINGRESP">
+	<summary>心跳回复(服务端到客户端)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_DISCONNECT">
+	<summary>断开连接(两个方向都允许)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.CONTROL_TYPE_AUTH">
+	<summary>认证信息交换(两个方向都允许)</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_CONNECTION_ACCEPTED">
+	<summary>已接受连接 </summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_UNACCEPTABLE_PROTOCOL_VER">
+	<summary>服务器不支持客户端请求的MQTT协议版本</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_ID_ENTIFIER_REJECTED">
+	<summary>客户端标识符是正确的UTF-8，但服务器不允许</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_SERVER_UNAVAILABLE">
+	<summary>已建立网络连接，但MQTT服务不可用</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_BAD_USER_OR_PWD">
+	<summary>用户名或密码中的数据格式不正确</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_NOT_AUTBORIZED">
+	<summary>客户端未被授权连接</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_UNSPECIFIED_ERROR">
+	<summary>服务端不愿透露的错误，或者没有适用的原因码</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_INVALID_MESSAGE">
+	<summary>CONNECT报文内容不能被正确的解析</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_PROTOCOL_ERROR">
+	<summary>CONNECT报文内容不符合本规范</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_VALIDITY_NOT_ACCEPTED">
+	<summary>CONNECT有效，但不被服务端所接受</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_PROTOCOL_VER_NOT_SUPPORTED">
+	<summary>服务端不支持客户端所请求的MQTT协议版本</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_INVALID_IDENTIFIER">
+	<summary>客户标识符有效，但未被服务端所接受</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_USER_OR_PWD_ERROR">
+	<summary>客户端指定的用户名密码未被服务端所接受</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_UNAUTHORIZED">
+	<summary>客户端未被授权连接</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_SERVER_NOT_AVAILABLE">
+	<summary>MQTT服务端不可用</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_SERVER_BUSY">
+	<summary>服务端正忙，请重试</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_PROHIBIT">
+	<summary>客户端被禁止，请联系服务端管理员</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_INVALID_AUTHENTICATION_METHOD">
+	<summary>认证方法未被支持，或者不匹配当前使用的认证方法</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_INVALID_SUBJECT_NAME">
+	<summary>遗嘱主题格式正确，但未被服务端所接受</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_MESSAGE_TOO_LONG">
+	<summary>CONNECT报文超过最大允许长度</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_QUOTA_EXCEEDED">
+	<summary>已超出实现限制或管理限制</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_INVALID_LOAD_FORMAT">
+	<summary>遗嘱载荷数据与载荷格式指示符不匹配</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_RESERVATION_NOT_SUPPORTED">
+	<summary>遗嘱保留标志被设置为1，但服务端不支持保留消息</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_UNSUPPORTED_QOS_LEVEL">
+	<summary>服务端不支持遗嘱中设置的QoS等级</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_TEMP_USE_OTHER_SERVER">
+	<summary>客户端应该临时使用其他服务端</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_PERMANENT_USE_OTHER_SERVER">
+	<summary>客户端应该永久使用其他服务端</summary>
+</member><member name="F:Mqtt客户端.MqttClient.REASON_CODE_EXCEEDING_CONNECT_SPEED_LIMIT">
+	<summary>超出了所能接受的连接速率限制</summary>
+</member><member name="F:Mqtt客户端.MqttClient.tcpSocket">
+	<summary>TCP客户端套接字 </summary>
+</member><member name="F:Mqtt客户端.MqttClient.timeCount">
+	<summary>用于心跳检测定时计数器</summary>
+</member><member name="F:Mqtt客户端.MqttClient.isPingResp">
+	<summary>发送心跳包后服务器应答标志</summary>
+</member><member name="F:Mqtt客户端.MqttClient.keepNotRespCount">
+	<summary>存放心跳包发送无应答次数（3次无应答视为离线）</summary>
+</member><member name="F:Mqtt客户端.MqttClient.isConnected">
+	<summary>定义标识符，用以表示TCP连接是否建立 </summary>
+</member><member name="F:Mqtt客户端.MqttClient.isMqttDisconnect">
+	<summary>标志是否执行了断开MQTT连接方法</summary>&gt;
+
+</member><member name="F:Mqtt客户端.MqttClient.mConnectOptions">
+	<summary>MQTT连接选项（存放连接必须的一些参数）</summary>
+</member><member name="F:Mqtt客户端.MqttClient.mClientId">
+	<summary>存放客户端唯一标识ID</summary>
+</member><member name="F:Mqtt客户端.MqttClient.readThread">
+	<summary>接收信息线程</summary>
+</member><member name="F:Mqtt客户端.MqttClient.mForm">
+	<summary>装载该类的窗体类（用于实现线程内托管操作主线程UI）</summary>
+</member><member name="F:Mqtt客户端.MqttClient.timerKeepLive">
+	<summary>执行心跳包发送用定时器</summary>
+</member><member name="T:Mqtt客户端.MqttClient.PublishReceive">
+	<summary>
+ 发布接收
+ </summary>
+	<param name="topic">主题名称</param>
+	<param name="message">发布的消息</param>
+	<remarks></remarks>
+</member><member name="T:Mqtt客户端.MqttClient.ErrorReceive">
+	<summary>
+ 接收错误
+ </summary>
+	<param name="controlType">触发错误的控制类型</param>
+	<param name="errCode">错误代码</param>
+	<param name="errMessage">错误描述消息</param>
+	<remarks></remarks>
+</member><member name="T:Mqtt客户端.MqttClient.ConnectSuccess">
+	<summary>
+ 连接成功
+ </summary>
+	<param name="sessionPresent">
+ 如果服务端接受了一个CleanSession设置为1的连接，服务端必须将CONNACK包中的Session Present设置为0，并且CONNACK包的返回码也设置为0。
+ 如果服务端接受了一个CleanSession设置为0的连接，Session Present的值取决于服务端是否已经存储了客户端Id对应的绘画状态。
+ 如果服务端已经存储了会话状态，CONNACK包中的Session Present必须设置为1。
+ 如果服务端没有存储会话状态，CONNACK包的Session Present必须设置为0。
+ 另外CONNACK包中的返回码必须设为0。
+ </param>
+	<remarks></remarks>
+</member><member name="T:Mqtt客户端.MqttClient.PublishProcess">
+	<summary>
+ 发布进度
+ </summary>
+	<param name="controlType">控制类型</param>
+	<param name="Identifier">识别id</param>
+	<remarks></remarks>
+</member><member name="T:Mqtt客户端.MqttClient.SubscribeState">
+	<summary>
+ 主题订阅主题主题
+ </summary>
+	<param name="isSubscribe">是订阅主题。true 是订阅主题，false 取消主题订阅</param>
+	<param name="Identifier">唯一标识id</param>
+	<remarks></remarks>
+</member><member name="T:Mqtt客户端.MqttClient.DisConnect">
+	<summary>
+ 断开连接
+ </summary>
+	<param name="onlyMqttConnect">true 是MQTT连接断开；false TCP连接断开</param>
+	<remarks></remarks>
+</member><member name="E:Mqtt客户端.MqttClient.publishReceiveArrival">
+	<summary>
+ 当新数据到达时出现
+ </summary>
+	<remarks>当新数据到达时出现</remarks>
+</member><member name="E:Mqtt客户端.MqttClient.errorReceiveArrival">
+	<summary>
+ 当接收到错误消息时
+ </summary>
+	<remarks>当新错误数据到达时出现</remarks>
+</member><member name="E:Mqtt客户端.MqttClient.connectMqttSuccess">
+	<summary>
+ 当与MQTT服务端连接成功
+ </summary>
+	<remarks>MQTT服务端应答确认连接时</remarks>
+</member><member name="E:Mqtt客户端.MqttClient.publishTopicProcess">
+	<summary>
+ 发布主题消息过程
+ </summary>
+	<remarks>发布完成或发布中</remarks>
+</member><member name="E:Mqtt客户端.MqttClient.subscribeTopicState">
+	<summary>
+ 完成主题订阅或取消订阅
+ </summary>
+	<remarks>收到订阅完成或退定完成时</remarks>
+</member><member name="E:Mqtt客户端.MqttClient.disConnectSuccess">
+	<summary>
+ 断开连接
+ </summary>
+	<remarks>收到MQTT断开消息或TCP断开时</remarks>
+</member><member name="M:Mqtt客户端.MqttClient.#ctor(System.Windows.Forms.Form)">
+	<summary>
+ 构造函数
+ </summary>
+	<param name="form">加载这个类的窗体类</param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.#ctor(System.Windows.Forms.Form,Mqtt客户端.MqttConnectOptions)">
+	<summary>
+ 构造函数
+ </summary>
+	<param name="form">加载这个类的窗体类</param>
+	<param name="onnectOptions">连接选项</param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.timerKeepLive_Elapsed(System.Object,System.Timers.ElapsedEventArgs)">
+	<summary>
+ 定时器触发事件
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.setConnectOptions(Mqtt客户端.MqttConnectOptions)">
+	<summary>
+ 设置连接选项
+ </summary>
+	<param name="connectOptions"></param>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttClient.connectOptions">
+	<summary>
+ 连接选项
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.mqttConnect(System.String,System.String)">
+	<summary>
+ 连接MQTT服务器（默认端口1883）
+ </summary>
+	<param name="addr">服务器IP地址</param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.mqttConnect(System.String,System.Int32,System.String)">
+	<summary>
+ 连接到MQTT服务器
+ </summary>
+	<param name="addr">服务器IP地址</param>
+	<param name="port">tcp端口号</param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.mqttConnect(System.String,System.String,Mqtt客户端.MqttConnectOptions)">
+	<summary>
+ 连接到MQTT服务器（默认端口1883）
+ </summary>
+	<param name="addr">服务器IP地址</param>
+	<param name="options">连接选项</param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.mqttConnect(System.String,System.Int32,System.String,Mqtt客户端.MqttConnectOptions)">
+	<summary>
+ 连接到MQTT服务器
+ </summary>
+	<param name="addr">服务器IP地址</param>
+	<param name="port">tcp端口号</param>
+	<param name="options">连接选项</param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.mqttDisconnect">
+	<summary>
+ 断开MQTT连接
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.subscribe(System.String,System.Byte)">
+	<summary>
+ 订阅主题
+ </summary>
+	<param name="topicName">主题名称</param>
+	<param name="QoS">服务端发送给客户端应用消息的最大等级</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.subscribe(System.String,System.Byte,System.UInt16)">
+	<summary>
+ 订阅主题
+ </summary>
+	<param name="topicName">主题名称</param>
+	<param name="QoS">服务端发送给客户端应用消息的最大等级</param>
+	<param name="packetIdentifier">包唯一id，默认使用1-65535之间的随机整数</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.subscribe(System.String[],System.Byte[])">
+	<summary>
+ 订阅主题
+ </summary>
+	<param name="topicNames">主题名称数组</param>
+	<param name="QoS">服务端发送给客户端应用消息的最大等级数组</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.subscribe(System.String[],System.Byte[],System.UInt16)">
+	<summary>
+ 订阅主题
+ </summary>
+	<param name="topicNames">主题名称数组</param>
+	<param name="QoS">服务端发送给客户端应用消息的最大等级数组</param>
+	<param name="packetIdentifier">包唯一id，默认使用1-65535之间的随机整数</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.unSubscribe(System.String)">
+	<summary>
+ 退订主题
+ </summary>
+	<param name="topicName">主题名</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.unSubscribe(System.String,System.UInt16)">
+	<summary>
+ 退订主题
+ </summary>
+	<param name="topicName">主题名</param>
+	<param name="packetIdentifier">包唯一id，默认使用1-65535之间的随机整数</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.unSubscribe(System.String[])">
+	<summary>
+ 退订主题
+ </summary>
+	<param name="topicNames">主题列表</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.unSubscribe(System.String[],System.UInt16)">
+	<summary>
+ 退订主题
+ </summary>
+	<param name="topicNames">主题列表</param>
+	<param name="packetIdentifier">包唯一id，默认使用1-65535之间的随机整数</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.publish(System.String,System.String,System.Boolean,System.Byte,System.Boolean)">
+	<summary>
+ 发布主题消息
+ </summary>
+	<param name="topicName">话题名称</param>
+	<param name="payload">发布的消息内容</param>
+	<param name="DUP">重复传送</param>
+	<param name="QoS">服务质量。为0 时接收端无需应答</param>
+	<param name="retain">
+ 存储话题标志
+ 如果RETAIN标识被设置为1，在一个从客户端发送到服务端的PUBLISH包中，服务端必须存储应用消息和QoS，以便可以发送给之后订阅这个话题的订阅者[MQTT-3.3.1-5]。
+ 当一个新的订阅发生，最后一个保留的消息，如果有的话，而且匹配订阅话题，必须发送给订阅者[MQTT-3.3.1-6]。
+ 如果服务端收到一个QoS 0并且RETAIN标识设置为1的消息，它必须清空之前为这个话题保存的所有消息。
+ 服务端应该存储新的QoS 0的消息作为这个话题新的保留消息，但是也可以选择在任何时候清空保留消息——如果这样做了，那这个话题就没有保留消息了[MQTT-3.3.1-7]。
+ </param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.publish(System.String,System.Byte[],System.Boolean,System.Byte,System.Boolean)">
+	<summary>
+ 发布主题消息
+ </summary>
+	<param name="topicName">话题名称</param>
+	<param name="payload">发布的消息内容</param>
+	<param name="DUP">重复传送</param>
+	<param name="QoS">服务质量。为0 时接收端无需应答</param>
+	<param name="retain">
+ 存储话题标志
+ 如果RETAIN标识被设置为1，在一个从客户端发送到服务端的PUBLISH包中，服务端必须存储应用消息和QoS，以便可以发送给之后订阅这个话题的订阅者[MQTT-3.3.1-5]。
+ 当一个新的订阅发生，最后一个保留的消息，如果有的话，而且匹配订阅话题，必须发送给订阅者[MQTT-3.3.1-6]。
+ 如果服务端收到一个QoS 0并且RETAIN标识设置为1的消息，它必须清空之前为这个话题保存的所有消息。
+ 服务端应该存储新的QoS 0的消息作为这个话题新的保留消息，但是也可以选择在任何时候清空保留消息——如果这样做了，那这个话题就没有保留消息了[MQTT-3.3.1-7]。
+ </param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.publish(System.String,System.Byte[],System.Boolean,System.Byte,System.Boolean,System.UInt16)">
+	<summary>
+ 发布主题消息
+ </summary>
+	<param name="topicName">话题名称</param>
+	<param name="payload">有效载荷</param>
+	<param name="DUP">重复传送标志</param>
+	<param name="QoS">服务质量。为0 时接收端无需应答</param>
+	<param name="retain">
+ 存储话题标志
+ 如果RETAIN标识被设置为1，在一个从客户端发送到服务端的PUBLISH包中，服务端必须存储应用消息和QoS，以便可以发送给之后订阅这个话题的订阅者[MQTT-3.3.1-5]。
+ 当一个新的订阅发生，最后一个保留的消息，如果有的话，而且匹配订阅话题，必须发送给订阅者[MQTT-3.3.1-6]。
+ 如果服务端收到一个QoS 0并且RETAIN标识设置为1的消息，它必须清空之前为这个话题保存的所有消息。
+ 服务端应该存储新的QoS 0的消息作为这个话题新的保留消息，但是也可以选择在任何时候清空保留消息——如果这样做了，那这个话题就没有保留消息了[MQTT-3.3.1-7]。
+ </param>
+	<param name="packetIdentifier">包唯一id，仅QoS》0时需要，可以不设置，不设置默认产生1-65535的随机ID</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.publish(System.String,System.String,System.Byte,System.Boolean)">
+	<summary>
+ 发布主题消息
+ </summary>
+	<param name="topicName">传递给的主题名称，例如“finance/stock/ibm”</param>
+	<param name="payload">要用作有效负载</param>
+	<param name="QoS">传递消息的服务质量。有效值为0、1或2</param>
+	<param name="retain"> 服务器是否应保留此消息</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.publish(System.String,System.Byte[],System.Byte,System.Boolean)">
+	<summary>
+ 发布主题消息
+ </summary>
+	<param name="topicName">传递给的主题名称，例如“finance/stock/ibm”</param>
+	<param name="payload">要用作有效负载</param>
+	<param name="QoS">传递消息的服务质量。有效值为0、1或2</param>
+	<param name="retain"> 服务器是否应保留此消息</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.publish(System.String,Mqtt客户端.MqttMessage)">
+	<summary>
+ 发布主题消息
+ </summary>
+	<param name="topicName">传递给的主题名称，例如“finance/stock/ibm”</param>
+	<param name="message">要传递的消息</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.getCpuGuid">
+	<summary>
+ 获取CPU ID并转位guid字符串
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.pubrecNext(System.Byte,System.Byte[])">
+	<summary>
+ 继续发布主题（用于响应 QoS 2的PUBLISH包、PUBREC包、PUBREL包及QoS 1的PUBLISH包）
+ </summary>
+	<param name="packetType">
+ 继续发布主题的包类型。
+ CONTROL_TYPE_PUBREC 响应QoS 2的PUBLISH包。这是QoS 2协议交换的第二个包；
+ CONTROL_TYPE_PUBREL 响应PUBREC包。是QoS 2协议交换的第三部分；
+ CONTROL_TYPE_PUBCOMP 响应PUBREL包。这是QoS 2协议交换的第四个也是最后一个包；
+ CONTROL_TYPE_PUBACK 发布确认。响应QoS等级为1的PUBLISH包
+ </param>
+	<param name="identifier">需要确认的包唯一标识</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.mqttPingReq">
+	<summary>
+ 心跳包发送
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.reciveMsgCallback">
+	<summary>
+ 接收线程回调
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.connectMqtt">
+	<summary>
+ 发送MQTT连接请求包
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.disConnectSock">
+	<summary>
+ 断开服务端连接
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.fixedHead(System.Byte,System.Int32,System.Byte,System.Boolean,System.Byte,System.Boolean)">
+	<summary>
+ 固定头
+ </summary>
+	<param name="msgType">消息类型（1-15）</param>
+	<param name="remainingLength">
+ 剩余长度，最大268435455。是一个变长字节整数，用来表示当前控制报文剩余部分的字节数，包括可变报头和负载的数据。
+ 剩余长度不包括用于编码剩余长度字段本身的字节数。MQTT控制报文总长度等于固定报头的长度加上剩余长度。
+ </param>
+	<param name="ver">MQTT版本</param>
+	<param name="DUP">重复传送</param>
+	<param name="QoS">服务质量</param>
+	<param name="retain">
+ 该标志位只用于 PUBLISH 消息。当一个客户端发送一条 PUBLISH 消息给服务器，假设该消息所属的主题（topic）
+ 为topicA，如果该标志位被置位（1），服务器在将该条消息发布给当前的所有topicA的订阅者之后，还应当保持这条消息。
+ </param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.variableHeaderConncet(System.Boolean,System.Boolean,System.Byte,System.Boolean,System.Boolean,System.Boolean,System.Byte,System.Int16)">
+	<summary>
+ 可变头数据（仅用于连接）
+ </summary>
+	<param name="cleanSessionFlag">为true的CONNECT报文，客户端和服务端必须丢弃任何已存在的会话，并开始一个新的会话</param>
+	<param name="willFlag">如果遗嘱标志（Will Flag）被设置为true，表示遗嘱消息必须已存储在服务端与此客户标识符相关的会话中</param>
+	<param name="willQoS">
+ 发布遗嘱消息（Will Message）时的服务质量（QoS）。
+ 如果willFlag设置为false，willQoS必须也设置为0（0x00）[MQTT-3.1.2-13]
+ 如果willFlag设置为true，willQoS可以被设置为0（0x00），1（0x01）或2（0x02）[MQTT-3.1.2-13]
+ </param>
+	<param name="willRetainFlag">
+ 指定遗嘱消息（Will Message）在发布时是否会被保留。
+ 如果willFlag标志被设置为false，willRetainFlag标志也必须设置为false [MQTT-3.1.2-13]。
+ 如果willFlag标志被设置为true时，如果willRetainFlag被设置为false，则服务端必须将遗嘱消息当做非保留消息发布 [MQTT-3.1.2-14]。
+ 如果willRetainFlag被设置为true，则服务端必须将遗嘱消息当做保留消息发布 [MQTT-3.1.2-15]。
+ </param>
+	<param name="userFlag">
+ 3.1.2.8 用户名标志。
+ 如果用户名标志（User Name Flag）被设置为false，有效载荷中不能包含用户名字段 [MQTT-3.1.2-16]。如果用户名标志被设置为true，有效载荷中必须包含用户名字段 [MQTT-3.1.2-17]。
+ </param>
+	<param name="pwdFlag">
+ 密码标志。
+ 如果密码标志（Password Flag）被设置为false，有效载荷中不能包含密码字段 [MQTT-3.1.2-18]。如果密码标志被设置为true，有效载荷中必须包含密码字段 [MQTT-3.1.2-19]。
+ </param>
+	<param name="ver">MQTT协议版本</param>
+	<param name="keepLive">保活计时时间（秒）</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.payloadConnect(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ MQTT连接的有效载荷
+ </summary>
+	<param name="clientId">客户端ID字符串</param>
+	<param name="willTopic">遗属主题（如果Will Flag设置为1，Will Topic是载荷的下一个字段。）</param>
+	<param name="willMessage">遗属消息（如果Will Flag设置为1，Will Message是载荷的iayige字段。）</param>
+	<param name="userName">用户名（如果User Name Flag设置为1，这将是载荷的下一个字段。）</param>
+	<param name="pwd">密码（如果Password Flag设置为1，这将是载荷的下一个字段。）</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.payloadConnect(System.String,System.String,System.Byte[],System.String,System.String)">
+	<summary>
+ MQTT连接的有效载荷
+ </summary>
+	<param name="clientId">客户端ID字符串</param>
+	<param name="willTopic">遗属主题（如果Will Flag设置为1，Will Topic是载荷的下一个字段。）</param>
+	<param name="willMessage">遗属消息（如果Will Flag设置为1，Will Message是载荷的iayige字段。）</param>
+	<param name="userName">用户名（如果User Name Flag设置为1，这将是载荷的下一个字段。）</param>
+	<param name="pwd">密码（如果Password Flag设置为1，这将是载荷的下一个字段。）</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.connectFlags(System.Boolean,System.Boolean,System.Byte,System.Boolean,System.Boolean,System.Boolean)">
+	<summary>
+ 连接标志
+ </summary>
+	<param name="cleanSessionFlag">为true的CONNECT报文，客户端和服务端必须丢弃任何已存在的会话，并开始一个新的会话</param>
+	<param name="willFlag">如果遗嘱标志（Will Flag）被设置为true，表示遗嘱消息必须已存储在服务端与此客户标识符相关的会话中</param>
+	<param name="willQoS">
+ 发布遗嘱消息（Will Message）时的服务质量（QoS）。
+ 如果willFlag设置为false，willQoS必须也设置为0（0x00）[MQTT-3.1.2-13]
+ 如果willFlag设置为true，willQoS可以被设置为0（0x00），1（0x01）或2（0x02）[MQTT-3.1.2-13]
+ </param>
+	<param name="willRetainFlag">
+ 指定遗嘱消息（Will Message）在发布时是否会被保留。
+ 如果willFlag标志被设置为false，willRetainFlag标志也必须设置为false [MQTT-3.1.2-13]。
+ 如果willFlag标志被设置为true时，如果willRetainFlag被设置为false，则服务端必须将遗嘱消息当做非保留消息发布 [MQTT-3.1.2-14]。
+ 如果willRetainFlag被设置为true，则服务端必须将遗嘱消息当做保留消息发布 [MQTT-3.1.2-15]。
+ </param>
+	<param name="userFlag">
+ 3.1.2.8 用户名标志。
+ 如果用户名标志（User Name Flag）被设置为false，有效载荷中不能包含用户名字段 [MQTT-3.1.2-16]。如果用户名标志被设置为true，有效载荷中必须包含用户名字段 [MQTT-3.1.2-17]。
+ </param>
+	<param name="pwdFlag">
+ 密码标志。
+ 如果密码标志（Password Flag）被设置为false，有效载荷中不能包含密码字段 [MQTT-3.1.2-18]。如果密码标志被设置为true，有效载荷中必须包含密码字段 [MQTT-3.1.2-19]。
+ </param>
+	<returns>连接标志</returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.keepAlive(System.Int16)">
+	<summary>
+ 将保活计时时间转位字节数组
+ </summary>
+	<param name="keepAlivetimer">保活计时时间（秒）</param>
+	<returns>字节数组的保活计时时间</returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.iByte2(System.Int16)">
+	<summary>
+ 低字节在前，高字节在后
+ </summary>
+	<param name="s"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.iByte2(System.UInt16)">
+	<summary>
+ 低字节在前，高字节在后
+ </summary>
+	<param name="s"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.getBitVal(System.Byte,System.Byte)">
+	<summary>
+ 获取整数的某一位值
+ </summary>
+	<param name="value">需要取位的整数</param>
+	<param name="bit">要取位的位置索引。从右至左0-7</param>
+	<returns>返回美国位的值0或1</returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.getBitVal(System.Byte,System.Byte,System.Byte)">
+	<summary>
+ 获取整数的某几位的值（连续索引）
+ </summary>
+	<param name="value"></param>
+	<param name="endBit">从右边开始计数的最后一个bit</param>
+	<param name="startBit">从右开始计数的开始bit置</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttClient.packetAnalysis(System.Byte[],System.Int32)">
+	<summary>
+ 接收到的数据包解析
+ </summary>
+	<param name="dataBuff">数据字节缓冲区</param>
+	<param name="buffLen">收到的数据缓冲区随机大小</param>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Mqtt客户端.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Mqtt客户端.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="F:Mqtt客户端.MqttMessage.mPayload">
+	<summary> 有效载荷</summary>
+</member><member name="F:Mqtt客户端.MqttMessage.mQoS">
+	<summary>消息的服务质量</summary>
+</member><member name="F:Mqtt客户端.MqttMessage.mDUP">
+	<summary>重复传送标志</summary>
+</member><member name="F:Mqtt客户端.MqttMessage.mMessageId">
+	<summary>消息id</summary>
+</member><member name="P:Mqtt客户端.MqttMessage.messageId">
+	<summary>
+ 消息id
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttMessage.duplicate">
+	<summary>
+ 重传标志
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttMessage.QoS">
+	<summary>
+ 消息服务质量(仅0-2之间)
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttMessage.retained">
+	<summary>
+ 是否会被保留
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttMessage.setPayload(System.Byte[])">
+	<summary>
+ 设置有效载荷
+ </summary>
+	<param name="payload">UTF-8编码字节数组</param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttMessage.setPayload(System.String)">
+	<summary>
+ 设置有效载荷
+ </summary>
+	<param name="payload"></param>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttMessage.getPayload">
+	<summary>
+ 获取有效载荷
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Mqtt客户端.MqttMessage.getPayloadString">
+	<summary>
+ 获取有效载荷字符串
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.KEEP_ALIVE_INTERVAL_DEFAULT">
+	<summary>如果未指定保持活动状态的默认时间间隔（秒）</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.CONNECTION_TIMEOUT_DEFAULT">
+	<summary>如果未指定连接超时，则默认连接超时（秒）</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.MAX_INFLIGHT_DEFAULT">
+	<summary>默认最大飞行时间（如果未指定）</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.CLEAN_SESSION_DEFAULT">
+	<summary>默认的清除会话设置（如果未指定）</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.MQTT_VERSION_DEFAULT">
+	<summary> 默认的MqttVersion首先是3.1.1，如果失败则返回3.1</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.MQTT_VERSION_3_1">
+	<summary> 3.1版本</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.MQTT_VERSION_3_1_1">
+	<summary> 3.1.1版本</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.MQTT_VERSION_5_0">
+	<summary> 5.0版本</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mKeepAliveInterval">
+	<summary>心跳时间间隔</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mConnectionTimeout">
+	<summary>连接超时</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mMaxInflight">
+	<summary>最大飞行时间(秒) </summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mUserName">
+	<summary>用户名</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mPassword">
+	<summary>密码</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mWillTopic">
+	<summary>遗属话题</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mWillMessage">
+	<summary>遗属消息</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mCleanSession">
+	<summary>清除会话 </summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mMqttVersion">
+	<summary> 协议版本</summary>
+</member><member name="F:Mqtt客户端.MqttConnectOptions.mWillFlag">
+	<summary>最后的遗属标志</summary>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.keepAliveInterval">
+	<summary>
+ 心跳检测间隔时间（秒）
+ </summary>
+	<value>间隔时间（秒）</value>
+	<returns>间隔时间（秒）</returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.connectionTimeout">
+	<summary>
+ 连接超时时间间隔（秒）
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.maxInflight">
+	<summary>
+ 最大飞行时间间隔
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.userName">
+	<summary>
+ 用户名
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.password">
+	<summary>
+ 密码
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.willFlag">
+	<summary>
+ 最后的遗属标志
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.willTopic">
+	<summary>
+ 最后遗属话题
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.willMessage">
+	<summary>
+ 最后的遗属消息
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.cleanSession">
+	<summary>
+ 清除会话
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Mqtt客户端.MqttConnectOptions.mqttVersion">
+	<summary>
+ mqtt协议版本
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>
